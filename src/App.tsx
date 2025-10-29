@@ -14,6 +14,8 @@ function App() {
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet vel voluptas nam tenetur accusamus nobis beatae quisquam eos dicta aliquam impedit ut, dolor laborum incidunt sunt consectetur natus voluptatibus! Sunt.
           </div>
         </div>
+
+        
     </Layout>
   </>
   )
