@@ -1,4 +1,5 @@
 import React,{ useState } from 'react';
+import MsgError from '../common/MsgError';
 
 const InsuranceForm = () =>{
   
@@ -8,20 +9,53 @@ const InsuranceForm = () =>{
     year: '',
     plan: ''
   });
+  const [error, setError] = useState(false);
 
-  // extraer valores de state
+  //extraer valores de state
   const { brand, year, plan } = data;
 
-  // handle generico para todos los campos 
+  //manejador generico para todos los campos 
   const handleInputChange = e =>{
     setData({
       ...data, [e.target.name] : e.target.value
     })
   }
 
+  //manejador del formulario
+  const handleSubmit = e =>{
+    e.preventDefault();
+
+    //Validar campos obligatorios
+    if(brand.trim() === ''|| year.trim() === '' || plan.trim() ===''){
+      setError(true);
+      return;
+    }
+
+    setError(false);
+
+    //Obtener la diferencia entre años
+
+    //Por cada año hay que restar un 3%
+
+    //Americano 15%
+    //Asiatico 5%
+    //Europeo 30%
+
+    //Plan basico aumenta 20%
+
+    //Plan completo aumenta 50%
+
+    //Calcular total
+  }
+
   return (
   <>
-  <form className="w-full mx-auto">
+  <form 
+    className="w-full mx-auto"
+    onSubmit={handleSubmit}
+  > 
+    { error ? <MsgError messageError="Todos los campos son obligatorios" /> : null}
+
     <div className="grid grid-cols-[15%_75%] gap-4 mb-4 items-center">
       <label
         htmlFor="brand"
