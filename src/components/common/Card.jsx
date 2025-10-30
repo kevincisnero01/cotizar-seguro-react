@@ -9,7 +9,7 @@ const Card = ({
     return (
         <>
         <div className={`block rounded-lg bg-white text-surface shadow-xl transition-all duration-300 hover:shadow-2xl dark:bg-surface-dark dark:text-white ${width}`}>
-            <div className={`border-b-2 border-neutral-100 rounded-t-lg px-6 py-3 dark:border-white/10 font-bold text-gray-800 ${headerColor}`}>
+            <div className={`md:border-b-2 border-neutral-100 md:rounded-t-lg px-6 py-3 dark:border-white/10 font-bold text-gray-800 ${headerColor}`}>
                 {title}
             </div>
             <div className="p-6">
