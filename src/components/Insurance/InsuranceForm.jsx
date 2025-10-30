@@ -1,21 +1,39 @@
-import React from 'react';
+import React,{ useState } from 'react';
 
 const InsuranceForm = () =>{
+  
+  //definir el state
+  const [data, setData] = useState({
+    brand: '',
+    year: '',
+    plan: ''
+  });
+
+  // extraer valores de state
+  const { brand, year, plan } = data;
+
+  // handle generico para todos los campos 
+  const handleInputChange = e =>{
+    setData({
+      ...data, [e.target.name] : e.target.value
+    })
+  }
+
   return (
   <>
   <form className="w-full mx-auto">
     <div className="grid grid-cols-[15%_75%] gap-4 mb-4 items-center">
       <label
-        htmlFor="insuranceType"
+        htmlFor="brand"
         className="block text-sm font-medium text-gray-700 md:text-right md:pr-4"
       >
         Marca
       </label>
 
       <select
-        id="insuranceType"
-        name="insuranceType"
+        id="brand" name="brand" value={brand}
         className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm"
+        onChange={handleInputChange}
       >
         <option value="">Selecciona una opción</option>
         <option value="americano">Americano</option>
@@ -24,16 +42,16 @@ const InsuranceForm = () =>{
       </select>
     
       <label
-        htmlFor="yearCar"
+        htmlFor="year"
         className="block text-sm font-medium text-gray-700 md:text-right md:pr-4"
       >
         Año 
       </label>
       
       <select
-        id="yearCar"
-        name="yearCar"
+        id="year" name="year" value={year}
         className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm"
+        onChange={handleInputChange}
       >
         <option value="">Selecciona el año</option>
         <option value="2021">2021</option>
@@ -53,13 +71,21 @@ const InsuranceForm = () =>{
       </label>
       <div className="flex items-center gap-4">
         <div className="flex items-center">
-          <input id="plan1" name="plan" type="radio" value="basic" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
+          <input 
+            type="radio" id="plan1" name="plan" value="basic" 
+            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" 
+            onChange={handleInputChange} checked={plan == 'basic'}
+          />
           <label htmlFor="plan1" className="ml-2 block text-sm text-gray-900">
             Básico
           </label>
         </div>
         <div className="flex items-center">
-          <input id="plan2" name="plan" type="radio" value="complete" className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
+          <input 
+            type="radio" id="plan2" name="plan" value="complete" 
+            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" 
+            onChange={handleInputChange} checked={plan == 'complete'}
+          />
           <label htmlFor="plan2" className="ml-2 block text-sm text-gray-900">
             Completo
           </label>
