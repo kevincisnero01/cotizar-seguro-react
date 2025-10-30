@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from './components/layout/Layout';
+import InsuranceForm from './components/Insurance/InsuranceForm';
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
           Cotizar Seguro
           </h1>
           <div className="bg-red-white p-6 rounded-none md:rounded-xl shadow-xl transition-all duration-300 hover:shadow-2xl h-full">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet vel voluptas nam tenetur accusamus nobis beatae quisquam eos dicta aliquam impedit ut, dolor laborum incidunt sunt consectetur natus voluptatibus! Sunt.
+            <InsuranceForm/>
           </div>
         </div>
 
