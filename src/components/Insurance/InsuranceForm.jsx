@@ -1,5 +1,6 @@
 import React,{ useState } from 'react';
 import MsgError from '../common/MsgError';
+import { geYearDifference,calculateBrand } from '../../helpers';
 
 const InsuranceForm = () =>{
   
@@ -9,9 +10,10 @@ const InsuranceForm = () =>{
     year: '',
     plan: ''
   });
+
   const [error, setError] = useState(false);
 
-  //extraer valores de state
+  //extraer valores del state
   const { brand, year, plan } = data;
 
   //manejador generico para todos los campos 
@@ -30,16 +32,24 @@ const InsuranceForm = () =>{
       setError(true);
       return;
     }
-
     setError(false);
 
+    //Base de calculo
+    let result = 2000;
+
     //Obtener la diferencia entre años
+    const different = geYearDifference(year);
+    console.log(different);
 
-    //Por cada año hay que restar un 3%
-
+    //Por cada año hay que restar un 3% del valor base
+    result -= ((different * 3) / result) / 100; 
+    
     //Americano 15%
     //Asiatico 5%
     //Europeo 30%
+    console.log(calculateBrand(brand));
+    result = calculateBrand(brand) * result;
+    console.log(result);
 
     //Plan basico aumenta 20%
 
