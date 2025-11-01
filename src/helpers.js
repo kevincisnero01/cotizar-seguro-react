@@ -1,4 +1,4 @@
-export function geYearDifference(year){
+export function getYearDifference(year){
     return new Date().getFullYear() - year;
 }
 
@@ -21,4 +21,9 @@ export function calculateBrand(brand){
     }
 
     return increment;
+}
+
+//Calcula el tipo de seguro
+export function getPlan(plan){
+    return (plan === 'basic') ? 1.20 : 1.50;
 }

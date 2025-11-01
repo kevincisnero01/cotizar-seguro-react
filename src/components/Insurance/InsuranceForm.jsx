@@ -1,6 +1,6 @@
 import React,{ useState } from 'react';
 import MsgError from '../common/MsgError';
-import { geYearDifference,calculateBrand } from '../../helpers';
+import { getYearDifference, calculateBrand, getPlan } from '../../helpers';
 
 const InsuranceForm = () =>{
   
@@ -38,22 +38,21 @@ const InsuranceForm = () =>{
     let result = 2000;
 
     //Obtener la diferencia entre años
-    const different = geYearDifference(year);
-    console.log(different);
+    const differentYear = getYearDifference(year);
 
     //Por cada año hay que restar un 3% del valor base
-    result -= ((different * 3) / result) / 100; 
-    
+    result -= ((differentYear * 3) * result) / 100; 
+
     //Americano 15%
     //Asiatico 5%
     //Europeo 30%
-    console.log(calculateBrand(brand));
-    result = calculateBrand(brand) * result;
+    result = parseFloat(calculateBrand(brand) * result).toFixed(2);
+
+    //Plan basico Aumenta 20%
+    //Plan completo Aumenta 50%
+    let inscrementPlan = getPlan(plan);
+    result = parseFloat(inscrementPlan * result).toFixed(2);
     console.log(result);
-
-    //Plan basico aumenta 20%
-
-    //Plan completo aumenta 50%
 
     //Calcular total
   }
